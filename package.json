@@ -1,0 +1,122 @@
+{
+    "name":  "@yuxianglin/dsh-bridge-browser",
+    "description":  "Bridge plugin: token-authenticated WebSocket carrier for the browser extension plus text-only browser_* tools that drive the user\u0027s Chrome via that extension",
+    "version":  "0.0.6",
+    "author":  "Yuxiang Lin",
+    "license":  "MIT",
+    "private":  true,
+    "dsh":  {
+                "bundle":  {
+                               "patch":  "./cordis.patch.yml"
+                           },
+                "client":  {
+                               "inject":  [
+                                              "@deepseek-ai/dsh-client-locale",
+                                              "@deepseek-ai/dsh-client-ui-slots",
+                                              "@deepseek-ai/dsh-client-ui-settings"
+                                          ],
+                               "platform":  "web"
+                           }
+            },
+    "type":  "module",
+    "main":  "lib/index.js",
+    "types":  "lib/types/index.d.ts",
+    "exports":  {
+                    ".":  {
+                              "types":  "./lib/types/index.d.ts",
+                              "default":  "./lib/index.js"
+                          },
+                    "./protocol":  {
+                                       "types":  "./lib/types/protocol.d.ts",
+                                       "default":  "./lib/protocol.js"
+                                   },
+                    "./invariant":  {
+                                        "types":  "./lib/types/invariant.d.ts",
+                                        "default":  "./lib/invariant.js"
+                                    },
+                    "./client":  "./lib/client.js",
+                    "./cordis.patch.yml":  "./cordis.patch.yml",
+                    "./src/*":  "./src/*",
+                    "./package.json":  "./package.json"
+                },
+    "files":  [
+                  "lib/index.js",
+                  "lib/invariant.js",
+                  "lib/protocol.js",
+                  "lib/client.js",
+                  "lib/types/**/*.d.ts",
+                  "cordis.patch.yml",
+                  "src"
+              ],
+    "peerDependencies":  {
+                             "@deepseek-ai/cordis":  "^4.0.2",
+                             "@deepseek-ai/dsh-agent":  "\u003e=0.1.5-rc.2 \u003c0.3.0",
+                             "@deepseek-ai/dsh-api-gateway":  "\u003e=0.1.5-rc.2 \u003c0.3.0",
+                             "@deepseek-ai/dsh-attachment":  "\u003e=0.1.5-rc.2 \u003c0.3.0",
+                             "@deepseek-ai/dsh-client-connection":  "\u003e=0.1.5-rc.2 \u003c0.3.0",
+                             "@deepseek-ai/dsh-client-locale":  "\u003e=0.1.5-rc.2 \u003c0.3.0",
+                             "@deepseek-ai/dsh-client-ui-settings":  "\u003e=0.1.5-rc.2 \u003c0.3.0",
+                             "@deepseek-ai/dsh-client-ui-slots":  "\u003e=0.1.5-rc.2 \u003c0.3.0",
+                             "@deepseek-ai/dsh-home-paths":  "\u003e=0.1.5-rc.2 \u003c0.3.0",
+                             "@deepseek-ai/dsh-host-webserver":  "\u003e=0.1.5-rc.2 \u003c0.3.0",
+                             "@deepseek-ai/dsh-invariants":  "\u003e=0.1.5-rc.2 \u003c0.3.0",
+                             "@deepseek-ai/dsh-llm":  "\u003e=0.1.5-rc.2 \u003c0.3.0",
+                             "@deepseek-ai/dsh-session-persistence":  "\u003e=0.1.5-rc.2 \u003c0.3.0",
+                             "@deepseek-ai/dsh-tools":  "\u003e=0.1.5-rc.2 \u003c0.3.0",
+                             "react":  "\u003e=18.2.0 \u003c19"
+                         },
+    "peerDependenciesMeta":  {
+                                 "@deepseek-ai/dsh-client-locale":  {
+                                                                        "optional":  true
+                                                                    },
+                                 "@deepseek-ai/dsh-client-ui-settings":  {
+                                                                             "optional":  true
+                                                                         },
+                                 "@deepseek-ai/dsh-client-ui-slots":  {
+                                                                          "optional":  true
+                                                                      },
+                                 "react":  {
+                                               "optional":  true
+                                           }
+                             },
+    "dependencies":  {
+                         "@deepseek-ai/schemastery":  "^3.18.2",
+                         "ws":  "^8.21.0"
+                     },
+    "scripts":  {
+                    "test":  "vitest run",
+                    "typecheck":  "tsc -b --pretty false",
+                    "build":  "tsc -b --pretty false \u0026\u0026 tsdown \u0026\u0026 node -e \"require(\u0027node:fs\u0027).copyFileSync(\u0027src/client.js\u0027, \u0027lib/client.js\u0027)\""
+                },
+    "devDependencies":  {
+                            "@deepseek-ai/cordis":  "4.0.2",
+                            "@deepseek-ai/cordis-plugin-include":  "1.0.7",
+                            "@deepseek-ai/cordis-plugin-loader":  "1.0.3",
+                            "@deepseek-ai/dsh-agent":  "0.1.5-rc.2",
+                            "@deepseek-ai/dsh-agent-loop":  "0.1.5-rc.2",
+                            "@deepseek-ai/dsh-api-gateway":  "0.1.5-rc.2",
+                            "@deepseek-ai/dsh-attachment":  "0.1.5-rc.2",
+                            "@deepseek-ai/dsh-client-connection":  "0.1.5-rc.2",
+                            "@deepseek-ai/dsh-home-paths":  "0.1.5-rc.2",
+                            "@deepseek-ai/dsh-host-webserver":  "0.1.5-rc.2",
+                            "@deepseek-ai/dsh-invariants":  "0.1.5-rc.2",
+                            "@deepseek-ai/dsh-llm":  "0.1.5-rc.2",
+                            "@deepseek-ai/dsh-session":  "0.1.5-rc.2",
+                            "@deepseek-ai/dsh-session-persistence":  "0.1.5-rc.2",
+                            "@deepseek-ai/dsh-session-persistence-jsonl":  "0.1.5-rc.2",
+                            "@deepseek-ai/dsh-session-projection":  "0.1.5-rc.2",
+                            "@deepseek-ai/dsh-storage":  "0.1.5-rc.2",
+                            "@deepseek-ai/dsh-storage-domain":  "0.1.5-rc.2",
+                            "@deepseek-ai/dsh-storage-json":  "0.1.5-rc.2",
+                            "@deepseek-ai/dsh-system-prompt":  "0.1.5-rc.2",
+                            "@deepseek-ai/dsh-tools":  "0.1.5-rc.2",
+                            "@deepseek-ai/dsh-user-questions":  "0.1.5-rc.2",
+                            "@deepseek-ai/dsh-workspace":  "0.1.5-rc.2",
+                            "@types/node":  "^22.20.0",
+                            "@types/ws":  "^8.18.1",
+                            "playwright-core":  "^1.61.1",
+                            "tsdown":  "0.22.2",
+                            "typescript":  "^6.0.3",
+                            "vitest":  "^4.1.11"
+                        }
+}
