@@ -1,3 +1,19 @@
+> # ⛔ 本仓库已废弃（2026-10-02）
+>
+> **不要再用这份适配版。** 上游原作者**已完成官方适配**：
+> **https://github.com/omdsh-dev/dsh-browser**（`packages/browser/bridge-browser`，**v0.0.7**，peer 已钉 `0.2.0-rc.2`，MIT，持续维护）
+>
+> **实测对比（同一台机器、同一令牌）**：
+> - 本仓库的补丁只是"事件流崩了不掐线"——**推送流是断的**，握手后宿主立刻 `close(1011)`
+> - **上游是在 host 适配层真修的**：握手后**无错误帧、连接保持、事件流可用**
+>
+> **改用上游的步骤**（桌面端插件面板，路径必须带盘符）：
+> 1. `git clone https://github.com/omdsh-dev/dsh-browser.git`
+> 2. `pnpm install` → `pnpm --filter @yuxianglin/dsh-bridge-browser run build`（上游**不提交 `lib/`**，必须自行构建）
+> 3. 面板里卸载本插件，改为从本地路径安装：
+>    `D:/<你的克隆路径>/dsh-browser-upstream/packages/browser/bridge-browser`
+>
+> 留着本仓库只为**记录当时的排查过程**，不再更新。
 # dsh-bridge-browser (DSH 0.2.0-rc.2 compatible fork)
 
 上游：[`@yuxianglin/dsh-bridge-browser`](https://github.com/) v0.0.5（MIT，作者 Yuxiang Lin）。
