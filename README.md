@@ -3,6 +3,12 @@
 上游：[`@yuxianglin/dsh-bridge-browser`](https://github.com/) v0.0.5（MIT，作者 Yuxiang Lin）。
 本仓库是**为 DSH 桌面端 0.2.0-rc.2 做的兼容适配版**，行为与上游一致，只改了下面三处。
 
+## ⚠️ 免责与致谢
+
+这是**非官方适配版**，唯一目的是让 `@yuxianglin/dsh-bridge-browser` 能在 **DSH 0.2.0-rc.2** 下继续可用，属于**临时过渡**。
+**核心实现、设计与版权均属原作者 Yuxiang Lin（MIT）。** 本仓库只包含兼容性改动。
+**原作者如有任何异议，请在本仓库开 issue，我会立即下架或移交。**
+
 ## 为什么需要这个 fork
 
 上游把 `peerDependencies` 钉在 `^0.1.5-rc.2`。在 semver 里 `0.x` 的 `^` **只允许同一 minor 内升级**，
